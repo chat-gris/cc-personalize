@@ -1,0 +1,7 @@
+# 興味プロファイルの生成物（個人の会話抜粋・興味の中身を含むためコミットしない）
+INTERESTS.md
+data/interests/
+
+# Python
+__pycache__/
+*.pyc
