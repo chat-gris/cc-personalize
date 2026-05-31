@@ -227,7 +227,10 @@ def main():
     all_messages = []
     new_state = dict(sessions_state)
 
+    # 直下に .jsonl があれば単一プロジェクト、なければ1階層下を再帰スキャン（親ディレクトリ指定に対応）
     jsonl_files = sorted(logs_dir.glob("*.jsonl"), key=lambda p: p.stat().st_mtime)
+    if not jsonl_files:
+        jsonl_files = sorted(logs_dir.glob("*/*.jsonl"), key=lambda p: p.stat().st_mtime)
 
     for filepath in jsonl_files:
         session_id = filepath.stem
